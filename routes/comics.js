@@ -33,7 +33,7 @@ router.get("/comic", async (req, res) => {
         `http://gateway.marvel.com/v1/public/comics/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
       );
 
-      res.json(response);
+      res.json(response.data);
     }
   } catch (error) {
     console.log(error.message);
