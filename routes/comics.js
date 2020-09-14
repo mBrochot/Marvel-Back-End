@@ -29,10 +29,12 @@ router.get("/comics", async (req, res) => {
 router.get("/comic", async (req, res) => {
   try {
     if (req.query.id) {
-      const response = await axios.get(
-        `http://gateway.marvel.com/v1/public/comics/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
-      );
-      res.json(response.data);
+      // const response = await axios.get(
+      //   `http://gateway.marvel.com/v1/public/comics/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
+      // );
+      const response = "salut";
+      // res.json(response.data);
+      res.json(response);
     }
   } catch (error) {
     console.log(error.message);
