@@ -43,6 +43,7 @@ router.get("/character/:id", async (req, res) => {
       `https://gateway.marvel.com/v1/public/characters/${req.params.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
     );
     res.json(response.data.data);
+    console.log(response.data.data);
   } catch (error) {
     console.log(error.message);
   }
