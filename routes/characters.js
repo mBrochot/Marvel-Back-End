@@ -29,7 +29,7 @@ router.get("/characters", async (req, res) => {
 router.get("/character/comics", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://gateway.marvel.com/v1/public/characters/${req.query.id}/comics?format=comic&formatType=comic&limit=100&&offset=${req.query.offset}&orderBy=onsaleDate&ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
+      `https://gateway.marvel.com/v1/public/characters/${req.params.id}/comics?format=comic&formatType=comic&limit=100&&offset=${req.query.offset}&orderBy=onsaleDate&ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
     );
     res.json(response.data);
   } catch (error) {
@@ -40,7 +40,7 @@ router.get("/character/comics", async (req, res) => {
 router.get("/character/:id", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://gateway.marvel.com/v1/public/characters/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
+      `https://gateway.marvel.com/v1/public/characters/${req.params.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
     );
     res.json(response.data.data);
   } catch (error) {
