@@ -8,7 +8,6 @@ const app = express();
 
 const date = new Date();
 const timestamp = Math.floor(date.getTime() / 1000);
-// const timestamp = Date.parse(date).toString();
 
 const hash = md5(
   timestamp + process.env.MARVEL_API_SECRET + process.env.MARVEL_API_KEY
