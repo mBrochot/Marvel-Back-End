@@ -26,13 +26,12 @@ router.get("/comics", async (req, res) => {
   }
 });
 
-router.get("/comics/:id", async (req, res) => {
+router.get("/comics", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://gateway.marvel.com/v1/public/comics/${req.params.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
+      `https://gateway.marvel.com/v1/public/comics/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
     );
-    res.json(response.data.data);
-    console.log(response.data.data);
+    res.json(response.data);
   } catch (error) {
     console.log(error.message);
   }
