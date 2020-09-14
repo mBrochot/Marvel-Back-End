@@ -40,7 +40,7 @@ router.get("/character/comics", async (req, res) => {
 router.get("/character", async (req, res) => {
   try {
     const response = await axios.get(
-      `https://gateway.marvel.com/v1/public/characters/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
+      `http://gateway.marvel.com/v1/public/characters/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
     );
     res.json(response.data);
   } catch (error) {

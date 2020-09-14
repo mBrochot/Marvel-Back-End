@@ -13,11 +13,11 @@ const hash = md5(
   timestamp + process.env.MARVEL_API_SECRET + process.env.MARVEL_API_KEY
 );
 
-router.get("/comics", async (req, res) => {
+router.get("/comic", async (req, res) => {
   try {
-    if (req.query.offset) {
+    if (req.query.id) {
       const response = await axios.get(
-        `http://gateway.marvel.com/v1/public/comics?format=comic&formatType=comic&hasDigitalIssue=false&orderBy=title&limit=100&offset=${req.query.offset}&ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
+        `http://gateway.marvel.com/v1/public/comics/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
       );
       res.json(response.data);
     }
@@ -26,11 +26,11 @@ router.get("/comics", async (req, res) => {
   }
 });
 
-router.get("/comic", async (req, res) => {
+router.get("/comics", async (req, res) => {
   try {
-    if (req.query.id) {
+    if (req.query.offset) {
       const response = await axios.get(
-        `https://gateway.marvel.com/v1/public/comics/${req.query.id}?ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
+        `http://gateway.marvel.com/v1/public/comics?format=comic&formatType=comic&hasDigitalIssue=false&orderBy=title&limit=100&offset=${req.query.offset}&ts=${timestamp}&apikey=${process.env.MARVEL_API_KEY}&hash=${hash}`
       );
       res.json(response.data);
     }
